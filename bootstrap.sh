@@ -9,7 +9,7 @@ echo "------------------------"
 export DEBIAN_FRONTEND=noninteractive
 apt-get -y --force-yes --no-install-recommends install xubuntu-desktop mousepad xubuntu-icon-theme \
 xfce4-goodies xubuntu-wallpapers gksu cifs-utils xfce4-whiskermenu-plugin firefox \
-xarchiver filezilla
+xarchiver filezilla synaptic curl
 
 echo 'Set New York timezone...'
 echo "------------------------"
@@ -124,6 +124,7 @@ sudo chown vagrant:vagrant /home/vagrant/.zshrc
 sudo chown -R vagrant:vagrant /home/vagrant/.oh-my-zsh
 
 # Change the oh my zsh default theme.
+mkdir /home/vagrant/workspace
 sudo sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
 sudo sed -i 's/plugins=(git)/plugins=(git ruby rails bower bundler docker gem git-extras mvn npm python redis-cli)/g' ~/.zshrc
 git clone https://github.com/powerline/fonts.git /home/vagrant/workspace/powerline
@@ -158,3 +159,9 @@ git clone https://gist.github.com/76b450a0c986e576e98b.git
 cd 76b450a0c986e576e98b
 sudo mv docker-cleanup /usr/local/bin/docker-cleanup
 sudo chmod +x /usr/local/bin/docker-cleanup
+
+#Install ChefDK
+wget -q "https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.6.2-1_amd64.deb" –no-check-certificate -P /tmp
+sudo dpkg -i /tmp/chefdk*.deb
+sudo apt-get -f install -y
+rm /tmp/chefdk*.deb
