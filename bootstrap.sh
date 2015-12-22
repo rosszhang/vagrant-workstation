@@ -11,6 +11,9 @@ apt-get -y --force-yes --no-install-recommends install xubuntu-desktop mousepad 
 xfce4-goodies xubuntu-wallpapers gksu cifs-utils xfce4-whiskermenu-plugin firefox \
 xarchiver filezilla synaptic curl
 
+echo 'Install VB addon and x11 display'
+sudo apt-get -y --force-yes --no-install-recommends install virtualbox-guest-utils virtualbox-guest-x11 virtualbox-guest-dkms
+
 echo 'Set New York timezone...'
 echo "------------------------"
 echo "America/New_York" | sudo tee /etc/timezone
