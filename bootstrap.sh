@@ -50,10 +50,10 @@ mkdir /home/vagrant/Development
 mkdir /home/vagrant/Development/git
 sudo chmod 777 -R /home/vagrant/Development/
 
-echo 'Install Eclipse JEE Kepler SR2...'
+echo 'Install Spring Tool Suite based on Eclipse 4.6...'
 echo "------------------------"
 # wget http://eclipse.mirror.garr.it/mirrors/eclipse//technology/epp/downloads/release/kepler/SR2/eclipse-jee-kepler-SR2-linux-gtk-x86_64.tar.gz -P /tmp
-wget http://dist.springsource.com/release/STS/3.7.0.RELEASE/dist/e4.5/spring-tool-suite-3.7.0.RELEASE-e4.5-linux-gtk-x86_64.tar.gz -P /tmp
+wget http://dist.springsource.com/release/STS/3.7.3.RELEASE/dist/e4.6/spring-tool-suite-3.7.3.RELEASE-e4.6-linux-gtk-x86_64.tar.gz -P /tmp
 tar xzf /tmp/spring-tool-suite-*-linux-gtk*.tar.gz -C /home/vagrant/Development/
 # sudo ln -s /home/vagrant/Development/sts-bundle/sts-3.7.0.RELEASE /usr/bin/sts
 # sudo ln -s /home/vagrant/Development/eclipse/eclipse /usr/bin/eclipse
@@ -61,10 +61,10 @@ tar xzf /tmp/spring-tool-suite-*-linux-gtk*.tar.gz -C /home/vagrant/Development/
 # sudo mv /tmp/eclipse.desktop /usr/share/applications/
 # rm /tmp/eclipse-jee-*-linux-gtk*.tar.gz
 
-echo 'Install Tomcat 8.0.24...'
+echo 'Install Tomcat 8.0.35...'
 echo "------------------------"
 # wget http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.39/bin/apache-tomcat-7.0.39.tar.gz -P /tmp
-wget http://archive.apache.org/dist/tomcat/tomcat-8/v8.0.24/bin/apache-tomcat-8.0.24.tar.gz -P /tmp
+wget http://archive.apache.org/dist/tomcat/tomcat-8/v8.0.35/bin/apache-tomcat-8.0.35.tar.gz -P /tmp
 tar xzf /tmp/apache-tomcat*.tar.gz -C /home/vagrant/Development/
 rm /tmp/apache-tomcat*.tar.gz
 
@@ -115,8 +115,8 @@ sudo sh /tmp/gitflow-installer.sh
 # sudo apt-cache search maven
 # sudo apt-get install maven -y
 
-# echo 'Install Oh My Zsh'
-# echo "------------------------"
+echo 'Install Oh My Zsh'
+echo "------------------------"
 sudo apt-get install zsh -y
 touch /home/vagrant/.zshrc
 # wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
@@ -176,3 +176,9 @@ echo 'Installing Anaconda 2-4.0.0'
 wget -q http://repo.continuum.io/archive/Anaconda2-4.0.0-Linux-x86_64.sh -P /tmp
 bash Anaconda2-4.0.0-Linux-x86_64.sh
 conda create --name py27conda2_3_0 python=2.7 anaconda=2.3.0
+source activate py27conda2_3_0
+
+#Install Flask Excel
+echo 'Install Flask Excel'
+pip install Flask-Excel
+pip install pyexcel-xlsx
