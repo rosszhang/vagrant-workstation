@@ -9,7 +9,7 @@ echo "------------------------"
 export DEBIAN_FRONTEND=noninteractive
 apt-get -y --force-yes --no-install-recommends install xubuntu-desktop mousepad xubuntu-icon-theme \
 xfce4-goodies xubuntu-wallpapers gksu cifs-utils xfce4-whiskermenu-plugin firefox \
-xarchiver filezilla synaptic curl
+xarchiver filezilla synaptic curl vim wget
 
 echo 'Install VB addon and x11 display'
 sudo apt-get -y --force-yes --no-install-recommends install virtualbox-guest-utils virtualbox-guest-x11 virtualbox-guest-dkms
@@ -120,7 +120,8 @@ sudo sh /tmp/gitflow-installer.sh
 sudo apt-get install zsh -y
 touch /home/vagrant/.zshrc
 # wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-sh -c "$(wget --no-check-certificate https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+# sh -c "$(wget --no-check-certificate https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 sudo chsh -s /bin/zsh vagrant
 sudo zsh
 sudo chown vagrant:vagrant /home/vagrant/.zshrc
@@ -128,10 +129,11 @@ sudo chown -R vagrant:vagrant /home/vagrant/.oh-my-zsh
 
 # Change the oh my zsh default theme.
 mkdir /home/vagrant/workspace
+sudo chown -R vagrant:vagrant /home/vagrant/workspace
 sudo sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
 sudo sed -i 's/plugins=(git)/plugins=(git ruby rails bower bundler docker gem git-extras mvn npm python redis-cli)/g' ~/.zshrc
 git clone https://github.com/powerline/fonts.git /home/vagrant/workspace/powerline
-sudo /home/vagrant/workspace/powerline/install.sh
+sh /home/vagrant/workspace/powerline/install.sh
 rm -rf /home/vagrant/workspace/powerline
 
 echo 'Install docker'
@@ -168,3 +170,9 @@ wget -q "https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/c
 sudo dpkg -i /tmp/chefdk*.deb
 sudo apt-get -f install -y
 rm /tmp/chefdk*.deb
+
+#Install Python Anaconda
+echo 'Installing Anaconda 2-4.0.0'
+wget -q http://repo.continuum.io/archive/Anaconda2-4.0.0-Linux-x86_64.sh -P /tmp
+bash Anaconda2-4.0.0-Linux-x86_64.sh
+conda create --name py27conda2_3_0 python=2.7 anaconda=2.3.0
