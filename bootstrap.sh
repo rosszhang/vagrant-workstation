@@ -185,3 +185,6 @@ sudo apt-get -f install python-pip -y
 echo 'Install Flask Excel'
 pip install Flask-Excel
 pip install pyexcel-xlsx
+
+# Change ownership
+sudo chown -hR vagrant:vagrant ./Development
