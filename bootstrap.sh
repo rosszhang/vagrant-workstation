@@ -112,8 +112,8 @@ sudo sh /tmp/gitflow-installer.sh
 
 # echo 'Install Maven in /usr/share/maven...'
 # echo "------------------------"
-# sudo apt-cache search maven
-# sudo apt-get install maven -y
+sudo apt-cache search maven
+sudo apt-get install maven -y
 
 echo 'Install Oh My Zsh'
 echo "------------------------"
