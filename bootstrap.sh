@@ -187,4 +187,4 @@ pip install Flask-Excel
 pip install pyexcel-xlsx
 
 # Change ownership
-sudo chown -hR vagrant:vagrant ./Development
+sudo chown -hR vagrant:vagrant ~/Development
