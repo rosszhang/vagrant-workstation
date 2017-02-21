@@ -171,15 +171,33 @@ sudo dpkg -i /tmp/chefdk*.deb
 sudo apt-get -f install -y
 rm /tmp/chefdk*.deb
 
+# Install docker ambari hadoop
+sudo docker pull sequenceiq/ambari
+
+# Pull ambari-docker
+mkdir /docker_files
+cd /docker_files
+
+# clone docker function from docker-ambari
+git clone https://github.com/sequenceiq/docker-ambari.git
+
 #Install Python Anaconda
 echo 'Installing Anaconda 2-4.0.0'
-wget -q http://repo.continuum.io/archive/Anaconda2-4.0.0-Linux-x86_64.sh -P /tmp
-bash Anaconda2-4.0.0-Linux-x86_64.sh
-conda create --name py27conda2_3_0 python=2.7 anaconda=2.3.0
-source activate py27conda2_3_0
 
-#Install PIP
-sudo apt-get -f install python-pip -y
+wget -q https://repo.continuum.io/archive/Anaconda2-4.0.0-Linux-x86_64.sh -P /tmp
+cd /tmp
+bash Anaconda2-4.0.0-Linux-x86_64.sh -b -p /home/vagrant/anaconda
+echo 'export PATH="/home/vagrant/anaconda/bin:$PATH"' >> /home/vagrant/.bashrc
+
+echo 'Create VM'
+export PATH="/home/vagrant/anaconda/bin:$PATH"
+echo $PATH
+bash 
+conda create -n tensorflow python=2.7
+echo 'Activate VM'
+source activate tensorflow
+# install tensorflow
+pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.0.0-cp27-none-linux_x86_64.whl
 
 #Install Flask Excel
 echo 'Install Flask Excel'
