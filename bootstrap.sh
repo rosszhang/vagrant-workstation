@@ -171,20 +171,5 @@ sudo dpkg -i /tmp/chefdk*.deb
 sudo apt-get -f install -y
 rm /tmp/chefdk*.deb
 
-#Install Python Anaconda
-echo 'Installing Anaconda 2-4.0.0'
-wget -q http://repo.continuum.io/archive/Anaconda2-4.0.0-Linux-x86_64.sh -P /tmp
-bash Anaconda2-4.0.0-Linux-x86_64.sh
-conda create --name py27conda2_3_0 python=2.7 anaconda=2.3.0
-source activate py27conda2_3_0
-
-#Install PIP
-sudo apt-get -f install python-pip -y
-
-#Install Flask Excel
-echo 'Install Flask Excel'
-pip install Flask-Excel
-pip install pyexcel-xlsx
-
 # Change ownership
 sudo chown -hR vagrant:vagrant ~/Development
