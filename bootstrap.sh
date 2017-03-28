@@ -171,8 +171,9 @@ sudo dpkg -i /tmp/chefdk*.deb
 sudo apt-get -f install -y
 rm /tmp/chefdk*.deb
 
+
 # Install docker ambari hadoop
-sudo docker pull sequenceiq/ambari
+# sudo docker pull sequenceiq/ambari
 
 # Pull ambari-docker
 mkdir /docker_files
@@ -198,11 +199,6 @@ echo 'Activate VM'
 source activate tensorflow
 # install tensorflow
 pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.0.0-cp27-none-linux_x86_64.whl
-
-#Install Flask Excel
-echo 'Install Flask Excel'
-pip install Flask-Excel
-pip install pyexcel-xlsx
 
 # Change ownership
 sudo chown -hR vagrant:vagrant ~/Development
